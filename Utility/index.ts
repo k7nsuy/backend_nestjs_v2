@@ -38,3 +38,4 @@ interface IProfile {
 let profile: Partial<IProfile> = {
      candy: 10
 }
+
