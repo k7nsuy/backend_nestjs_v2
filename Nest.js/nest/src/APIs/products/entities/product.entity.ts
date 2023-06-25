@@ -3,7 +3,7 @@ import { ProductCategory } from 'src/APIs/productsCategories/entities/productsCa
 import { ProductSalesLocation } from 'src/APIs/productsSalesLocation/entities/productsSalesLocation.entity'
 import { ProductTags } from 'src/APIs/productsTags/entities/productsTags.entity'
 import { User } from 'src/APIs/users/entities/user.entity'
-import { JoinTable, Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, ManyToOne, ManyToMany } from 'typeorm'
+import { JoinTable, Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, ManyToOne, ManyToMany, DeleteDateColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
 @ObjectType()
@@ -55,4 +55,13 @@ export class Product {
 
      // ManyToMany를 JoinTable통해 자동으로 만들지 말고 직접 만들어 줘야 할 때
      // => JoinTable에서 추가적인 Column이 필요한 경우
+
+     @CreateDateColumn() // 데이터 등록시 자동으로 시간 추가
+     createdAt: Date
+
+     @UpdateDateColumn() // 데이터 업데이트 시 자동으로 시간 추가
+     updatedAt: Date
+
+     @DeleteDateColumn() // soft 삭제 시간 기록을 위함
+     deletedAt: Date
 }
